@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putadderss.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybounite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 17:17:58 by ybounite          #+#    #+#             */
-/*   Updated: 2024/11/16 17:20:58 by ybounite         ###   ########.fr       */
+/*   Created: 2024/11/16 17:53:56 by ybounite          #+#    #+#             */
+/*   Updated: 2024/11/16 17:53:57 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_printaddress(unsigned long adres)
 {
-	int res;
+	int	i;
 
-	res = 0;
-	if (n == -2147483648)
-	{
-		res += ft_putchar('-');
-		res += ft_putchar('2');
-		n = 147483648;
-	}
-	if (n < 0)
-	{
-		res += ft_putchar('-');
-		n = -n;
-    }
-	if (n >= 10)
-		res += ft_putnbr(n / 10);
-    res += ft_putchar(n % 10 + '0');
-    return res;
+	i = 0;
+	i += ft_putstr("0x");
+	if (adres == 0)
+		i += ft_putchar('0');
+	else
+		i += ft_puthex_lowercase(adres);
+	return (i);
 }
- 

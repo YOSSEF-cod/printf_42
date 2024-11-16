@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybounite <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 17:17:58 by ybounite          #+#    #+#             */
-/*   Updated: 2024/11/16 17:20:58 by ybounite         ###   ########.fr       */
+/*   Created: 2024/11/16 17:17:39 by ybounite          #+#    #+#             */
+/*   Updated: 2024/11/16 17:17:42 by ybounite         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <limits.h>
 
-#include "ft_printf.h"
+int	ft_printf(const char *format, ...);
+int	ft_puthex_lowercase(unsigned long n);
+int	ft_puthex_uppercase(unsigned int n);
+int	ft_putnbr(int n);
+int	ft_putunsigned(unsigned long n);
+int	ft_putstr(char *str);
+int	ft_putchar(char c);
+int	ft_printaddress(unsigned long adres);//
 
-int	ft_putnbr(int n)
-{
-	int res;
-
-	res = 0;
-	if (n == -2147483648)
-	{
-		res += ft_putchar('-');
-		res += ft_putchar('2');
-		n = 147483648;
-	}
-	if (n < 0)
-	{
-		res += ft_putchar('-');
-		n = -n;
-    }
-	if (n >= 10)
-		res += ft_putnbr(n / 10);
-    res += ft_putchar(n % 10 + '0');
-    return res;
-}
- 
+#endif
